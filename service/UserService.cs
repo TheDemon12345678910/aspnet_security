@@ -16,4 +16,8 @@ public class UserService
     {
         return _repository.GetAll();
     }
+    public User? Get(SessionData data)
+    {
+        return _repository.GetById(data.UserId);
+    }
 }

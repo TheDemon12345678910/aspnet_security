@@ -49,7 +49,8 @@ SELECT
     id as {nameof(User.Id)},
     full_name as {nameof(User.FullName)},
     email as {nameof(User.Email)},
-    avatar_url as {nameof(User.AvatarUrl)}
+    avatar_url as {nameof(User.AvatarUrl)},
+    role as {nameof(User.Role)}
 FROM users
 ";
         using var connection = _dataSource.OpenConnection();

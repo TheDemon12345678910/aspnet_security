@@ -21,4 +21,7 @@ INSERT INTO users (full_name, email, avatar_url) VALUES ('Jessey Burris', 'jburr
 INSERT INTO users (full_name, email, avatar_url) VALUES ('Zacherie MacAughtrie', 'zmacaughtrie3@blogger.com', 'https://robohash.org/natusetminus.png?size=50x50&set=set1');
 INSERT INTO users (full_name, email, avatar_url) VALUES ('Annaliese Woodley', 'awoodley4@reddit.com', 'https://robohash.org/veritatisetenim.png?size=50x50&set=set1');
 
+ALTER TABLE users ADD COLUMN role VARCHAR(10) DEFAULT 'student';
+
+
 SELECT * FROM users;

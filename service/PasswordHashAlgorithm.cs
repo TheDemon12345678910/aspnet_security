@@ -17,6 +17,7 @@ public abstract class PasswordHashAlgorithm
         }
     }
 
+
     public abstract string GetName();
 
     public abstract string HashPassword(string password, string salt);

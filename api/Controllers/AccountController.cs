@@ -30,7 +30,7 @@ public class AccountController : ControllerBase
     [Route("/api/account/register")]
     public ResponseDto Register([FromBody] RegisterDto dto)
     {
-        var user = _service.Register(dto.FullName, dto.Email, dto.Password, dto.AvatarUrl);
+        var user = _service.Register(dto.FullName, dto.Email, dto.Password, avatarUrl: dto.AvatarUrl);
         return new ResponseDto
         {
             MessageToClient = "Successfully registered"

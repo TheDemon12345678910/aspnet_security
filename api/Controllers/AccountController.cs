@@ -20,6 +20,7 @@ public class AccountController : ControllerBase
     public ResponseDto Login([FromBody] LoginDto dto)
     {
         var user = _service.Authenticate(dto.Email, dto.Password);
+        HttpContext.SetSessionData(SessionData.FromUser(user));
         return new ResponseDto
         {
             MessageToClient = "Successfully authenticated"
@@ -37,10 +38,16 @@ public class AccountController : ControllerBase
         };
     }
 
+    [RequireAuthentication]
     [HttpGet]
     [Route("/api/account/whoami")]
     public ResponseDto WhoAmI()
     {
-        throw new NotImplementedException();
+        var data = HttpContext.GetSessionData();
+        var user = _service.Get(data);
+        return new ResponseDto
+        {
+            ResponseData = user
+        };
     }
 }

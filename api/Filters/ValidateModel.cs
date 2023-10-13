@@ -7,13 +7,9 @@ namespace api.Filters;
 
 public class ValidateModel : ActionFilterAttribute
 {
-    
     public override void OnActionExecuting(ActionExecutingContext context)
     {
         
-    
-        if (context.HttpContext.GetSessionData() == null) throw new AuthenticationException();
-    
         if (context.ModelState.IsValid)
             return;
         var errorMessages = context.ModelState
@@ -27,5 +23,12 @@ public class ValidateModel : ActionFilterAttribute
         {
             StatusCode = 400
         };
+    }
+}
+public class RequireAuthentication : ActionFilterAttribute
+{
+    public override void OnActionExecuting(ActionExecutingContext context)
+    {
+        if (context.HttpContext.GetSessionData() == null) throw new AuthenticationException();
     }
 }

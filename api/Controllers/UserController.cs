@@ -1,13 +1,15 @@
+using api.Filters;
 using api.TransferModels;
 using Microsoft.AspNetCore.Mvc;
-using Nexus.Tools.Validations.Middlewares.Authentication.Attributes;
 using service;
 
 namespace api.Controllers;
+
+[RequireAuthentication]
 public class UserController : ControllerBase
 {
     
-    [RequireAuthentication]
+    
     private readonly UserService _service;
 
     public UserController(UserService service)
@@ -25,7 +27,6 @@ public class UserController : ControllerBase
         };
     }
     
-    [RequireAuthentication]
     [HttpGet]
     [Route("/api/account/whoami")]
     public ResponseDto WhoAmI()
